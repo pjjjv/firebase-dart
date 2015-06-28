@@ -43,6 +43,17 @@ class DataSnapshot {
   }
 
   /**
+   * Get the JSON representation of the DataSnapshot.
+   * The value may be null, indicating that the snapshot is empty and contains
+   * no data.
+   */
+  dynamic valAsJson() {
+    var obj = _ds.callMethod('val');
+    var json = context['JSON'].callMethod('stringify', [obj]);
+    return json;
+  }
+  
+  /**
    * Get a DataSnapshot for the location at the specified relative path. The
    * relative path can either be a simple child name or a deeper slash
    * separated path.
